@@ -31,4 +31,4 @@ kubectl apply -f deployment_apache.yaml
 
 #### port-forward
 
-kubectl port-forward svc/webserver 80:8080
+kubectl port-forward svc/webserver 8080:80 (puerto del localhost: puerto origen del docker)
