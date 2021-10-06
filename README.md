@@ -32,3 +32,7 @@ kubectl apply -f deployment_apache.yaml
 #### port-forward
 
 kubectl port-forward svc/webserver 8080:80 (puerto del localhost: puerto origen del docker)
+
+#### Entrar al bash de un pod
+
+kubectl exec --stdin --tty POD_NAME -- /bin/bash
