@@ -2,7 +2,7 @@
 
 Este repo crea un Docker de un server apache de test, donde yo puedo cambiar el index.php y un archivo de texto para probar funcionalidades de actualizacion automatica de pods sin necesidad de hacer alguna acción en mi cluster de k8s, para esto el cluster de k8s debe tener un cronjob que reinicia el deployment que hace referencia a la imagen de Docker del apache-test cada minuto . El cronjob necesita unos permisos especificos para poder ejecutar los comandos de "kubectl" , por esto se crea un ServiceAccount y se le dan los accesos necesarios por RBAC para que pueda reiniciar un deployment. El deployment tiene la propiedad         imagePullPolicy: Always , de esta forma siempre buscará descargar la ultima version de la imagen de Doccker y no se tendra que manejar un versionamiento en el deploymente , ya que siempre uso el tag de:latest
 
-##### Riesgos ...
+#### Riesgos ...
 
 * Sí falla no hay forma de devolverse (claro que haciendo intervención manual sí podria actuar) , toca esperar hasta x tiempo para actualizar reglas.
 
