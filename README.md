@@ -1,5 +1,6 @@
 ## Dockerfile-apache-test
 
+
 Este repo crea un Docker de un server apache de test, donde el objetivo es poder cambiar el index.php y un archivo de texto, para probar funcionalidades de actualización automática de pods sin necesidad de hacer alguna acción manual en un cluster de k8s, para esto el cluster de k8s debe tener un cronjob ref https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/ que reinicia el deployment que hace referencia a la imagen de Docker del apache-test cada minuto . El cronjob necesita unos permisos específicos para poder ejecutar los comandos de "kubectl" , por esto se crea un ServiceAccount y se le dan los accesos necesarios por RBAC para que pueda reiniciar un deployment. El deployment tiene la propiedad         imagePullPolicy: Always ref: https://kubernetes.io/docs/concepts/containers/images/  , de esta forma siempre buscará descargar la última versión de la imagen de Docker y no se tendrá que manejar un versionamiento en el deployment , ya que siempre se usa el tag de:latest
 
 #### Riesgos ...
